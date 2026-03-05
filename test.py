@@ -15,7 +15,6 @@ def generate_quiz_html():
     timestamp = datetime.now().strftime("%B %d, %Y - %H:%M:%S")
     total_questions = len(categories) * 5
 
-    # We use enumerate to give each section a unique ID for the timer
     for idx, (label, digit_type, count) in enumerate(categories):
         quiz_html += f"""
         <div class="section" id="section-{idx}">
@@ -41,7 +40,6 @@ def generate_quiz_html():
             question_text = " + ".join(map(str, numbers))
             answer = sum(numbers)
             
-            # The input now triggers startSectionTimer on the first question
             quiz_html += f"""
             <li>
                 {question_text} = 
@@ -64,7 +62,7 @@ def generate_quiz_html():
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Math Quiz - Section Timers</title>
+        <title>Math Quiz - Precision Training</title>
         <style>
             body {{ font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }}
             .container {{ background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }}
@@ -73,6 +71,7 @@ def generate_quiz_html():
             .section {{ background: #fff; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 25px; padding: 15px; transition: 0.3s; }}
             .section-header {{ display: flex; justify-content: space-between; align-items: center; background: #e8f5e9; padding: 5px 15px; border-radius: 6px; margin-bottom: 10px; }}
             .section-stats {{ font-weight: bold; color: #2E7D32; font-size: 0.9em; }}
+            .section.complete {{ border: 2px solid #4CAF50; background-color: #fafffa; }}
             
             .stats-bar {{ background: #333; color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; display: flex; justify-content: space-between; }}
             .user-input {{ width: 80px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1em; text-align: center; }}
@@ -83,13 +82,6 @@ def generate_quiz_html():
             .main-btn {{ padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; }}
             .btn-toggle {{ background: #4CAF50; }}
             .btn-reset {{ background: #f44336; }}
-            
-            @media print {{
-                .controls, .reveal-btn, .user-input, .footer, .section-stats, .stats-bar {{ display: none !important; }}
-                .actual-answer {{ display: none !important; }}
-                .section {{ border: none; }}
-                .section-header {{ background: none; border-bottom: 1px solid #ccc; }}
-            }}
         </style>
     </head>
     <body>
@@ -98,8 +90,8 @@ def generate_quiz_html():
             <p><strong>Generated:</strong> {timestamp}</p>
             
             <div class="stats-bar">
-                <span>Total Progress: <span id="total-score">0</span> / {total_questions}</span>
-                <span id="overall-status">Status: Ready</span>
+                <span>Total Score: <span id="total-score">0</span> / {total_questions}</span>
+                <span id="overall-status">Take your time between sections!</span>
             </div>
 
             <div class="controls">
@@ -111,10 +103,6 @@ def generate_quiz_html():
             <div class="quiz-section">
                 {quiz_html}
             </div>
-
-            <div class="footer" style="text-align:center; color:#888; margin-top:30px; font-size:0.8em;">
-                Automated Math Quiz - Speed & Accuracy Trainer
-            </div>
         </div>
 
         <script>
@@ -122,7 +110,7 @@ def generate_quiz_html():
             let sectionIntervals = {{}};
 
             function startSectionTimer(sId) {{
-                // Only start if not already running and not finished
+                // Only start if not already running and not previously finished
                 if (!sectionIntervals[sId]) {{
                     sectionTimers[sId] = 0;
                     sectionIntervals[sId] = setInterval(() => {{
@@ -148,13 +136,18 @@ def generate_quiz_html():
 
                 updateScores(sId);
 
-                // Stop timer if 5th question in section is answered
-                if (qIdx == "4" && input.value !== "") {{
-                    clearInterval(sectionIntervals[sId]);
-                    sectionIntervals[sId] = "FINISHED";
+                // If it's the last question of the section (Index 4)
+                if (qIdx == "4") {{
+                    if (input.value !== "") {{
+                        clearInterval(sectionIntervals[sId]);
+                        sectionIntervals[sId] = "FINISHED";
+                        document.getElementById('section-' + sId).classList.add('complete');
+                    }}
+                    // DO NOT jump to the next input if we just finished a section
+                    return; 
                 }}
 
-                // Focus jump
+                // Otherwise, focus jump to the next input in the SAME section
                 const allInputs = Array.from(document.querySelectorAll('.user-input'));
                 const currentIndex = allInputs.indexOf(input);
                 if (currentIndex < allInputs.length - 1) {{
@@ -171,8 +164,8 @@ def generate_quiz_html():
             }}
 
             function resetWorksheet() {{
-                if(confirm("Clear all data?")) {{
-                    location.reload(); // Refreshing is the cleanest way to reset all timers/logic
+                if(confirm("This will reset all timers and scores. Continue?")) {{
+                    location.reload();
                 }}
             }}
 
