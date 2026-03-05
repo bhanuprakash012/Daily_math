@@ -1,7 +1,7 @@
 # 🧮 Daily Math Quiz Generator
 
 ![Daily Update](https://img.shields.io/badge/Status-Auto--Updating-green)
-[![Run Daily Script](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/daily_update.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/daily_update.yml)
+[![Run Daily Script](https://github.com/bhanuprakash012/Daily_math/actions/workflows/daily_update.yml/badge.svg)](https://github.com/bhanuprakash012/Daily_math/actions/workflows/daily_update.yml)
 
 A randomized Python script designed to generate math addition worksheets. This repository is automated to update itself once a day using GitHub Actions.
 
