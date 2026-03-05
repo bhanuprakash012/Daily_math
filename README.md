@@ -5,7 +5,7 @@
 
 A randomized Python script designed to generate math addition worksheets. This repository is automated to update itself once a day using GitHub Actions.
 
-**🔗 [Click here to see today's Quiz!](https://YOUR_USERNAME.github.io/YOUR_REPO/)**
+**🔗 [Click here to see today's Quiz!](https://bhanuprakash012.github.io/Daily_math/)**
 
 ---
 
