@@ -3,32 +3,228 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daily Math Quiz</title>
         <style>
-            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
-            h1 { border-bottom: 2px solid #4CAF50; color: #2E7D32; }
-            h3 { background: #f4f4f4; padding: 8px; border-radius: 4px; color: #555; }
-            .footer { margin-top: 50px; font-size: 0.8em; color: #888; border-top: 1px solid #ddd; padding-top: 10px; }
-            .answers { background: #fffbe6; padding: 20px; border: 1px dashed #d4a017; border-radius: 8px; margin-top: 40px; }
-            li { margin-bottom: 10px; font-weight: bold; font-size: 1.1em; }
+            body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f9f9f9; }
+            .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            h1 { border-bottom: 3px solid #4CAF50; color: #2E7D32; padding-bottom: 10px; }
+            h3 { background: #e8f5e9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 4px; color: #2E7D32; margin-top: 25px; }
+            li { margin-bottom: 15px; font-weight: bold; font-size: 1.2em; list-style-position: inside; }
+            .answer-box { color: #ccc; }
+            .actual-answer { color: #d32f2f; font-weight: 800; border-bottom: 2px solid #d32f2f; margin-right: 10px; }
+            .reveal-btn { background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.7em; padding: 2px 8px; vertical-align: middle; }
+            .reveal-btn:hover { background: #ddd; }
+            .controls { margin: 20px 0; display: flex; gap: 10px; }
+            .main-btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+            .btn-print { background: #2196F3; color: white; }
+            .btn-toggle { background: #4CAF50; color: white; }
+            
+            /* Print View Optimization */
+            @media print {
+                .reveal-btn, .controls, .footer { display: none !important; }
+                body { background: white; margin: 0; padding: 0; }
+                .container { box-shadow: none; border: none; width: 100%; }
+                .actual-answer { display: none !important; } /* Hide answers when printing worksheet */
+                .answer-box { display: inline !important; color: #000; }
+            }
+            
+            .footer { margin-top: 50px; font-size: 0.8em; color: #888; text-align: center; border-top: 1px solid #ddd; padding-top: 20px; }
         </style>
     </head>
     <body>
-        <h1>🧮 Daily Math Practice</h1>
-        <p>Generated on: 2026-03-05 09:25:57</p>
-        
-        <div class="quiz-section">
-            <h3>1) Single digit number addition</h3><ol><li>3 + 8 = ________</li><li>8 + 7 = ________</li><li>3 + 9 = ________</li><li>7 + 3 = ________</li><li>3 + 4 = ________</li></ol><h3>2) Single digit addition of 5</h3><ol><li>4 + 7 + 8 + 4 + 3 = ________</li><li>6 + 7 + 9 + 3 + 9 = ________</li><li>7 + 5 + 6 + 3 + 2 = ________</li><li>7 + 2 + 5 + 1 + 7 = ________</li><li>3 + 3 + 2 + 4 + 5 = ________</li></ol><h3>3) Double digit addition</h3><ol><li>31 + 76 = ________</li><li>19 + 85 = ________</li><li>98 + 70 = ________</li><li>88 + 80 = ________</li><li>15 + 66 = ________</li></ol><h3>4) Double digit addition of 5</h3><ol><li>90 + 51 + 54 + 94 + 56 = ________</li><li>15 + 48 + 73 + 17 + 61 = ________</li><li>97 + 40 + 65 + 38 + 73 = ________</li><li>33 + 65 + 56 + 49 + 47 = ________</li><li>64 + 99 + 98 + 34 + 84 = ________</li></ol><h3>5) 3-digit + 2-digit addition</h3><ol><li>229 + 25 = ________</li><li>899 + 19 = ________</li><li>133 + 37 = ________</li><li>596 + 25 = ________</li><li>620 + 37 = ________</li></ol><h3>6) 3-digit addition</h3><ol><li>715 + 494 = ________</li><li>231 + 986 = ________</li><li>584 + 736 = ________</li><li>814 + 768 = ________</li><li>800 + 570 = ________</li></ol>
+        <div class="container">
+            <h1>🧮 Daily Math Practice</h1>
+            <p><strong>Generated on:</strong> March 05, 2026 - 09:43:27</p>
+            
+            <div class="controls">
+                <button class="main-btn btn-toggle" onclick="toggleAll()">Show All Answers</button>
+                <button class="main-btn btn-print" onclick="window.print()">Print Worksheet</button>
+            </div>
+
+            <div class="quiz-section">
+                <h3>1) Single digit number addition</h3><ol>
+            <li>
+                9 + 8 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">17</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                2 + 2 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">4</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                7 + 4 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">11</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                2 + 5 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">7</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                8 + 7 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">15</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li></ol><h3>2) Single digit addition of 5</h3><ol>
+            <li>
+                2 + 4 + 8 + 6 + 5 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">25</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                5 + 7 + 2 + 8 + 3 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">25</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                3 + 2 + 7 + 6 + 1 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">19</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                2 + 8 + 7 + 7 + 9 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">33</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                5 + 6 + 5 + 7 + 2 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">25</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li></ol><h3>3) Double digit addition</h3><ol>
+            <li>
+                33 + 75 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">108</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                97 + 65 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">162</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                25 + 89 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">114</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                51 + 94 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">145</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                95 + 12 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">107</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li></ol><h3>4) Double digit addition of 5</h3><ol>
+            <li>
+                72 + 13 + 57 + 88 + 98 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">328</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                53 + 90 + 37 + 20 + 21 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">221</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                39 + 71 + 56 + 99 + 96 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">361</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                59 + 92 + 67 + 31 + 28 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">277</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                74 + 88 + 33 + 76 + 11 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">282</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li></ol><h3>5) 3-digit + 2-digit addition</h3><ol>
+            <li>
+                342 + 55 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">397</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                123 + 27 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">150</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                791 + 14 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">805</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                240 + 55 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">295</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                518 + 72 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">590</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li></ol><h3>6) 3-digit addition</h3><ol>
+            <li>
+                884 + 830 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">1714</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                330 + 436 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">766</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                982 + 348 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">1330</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                158 + 669 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">827</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                674 + 276 = <span class="answer-box">_______</span>
+                <span class="actual-answer" style="display:none;">950</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li></ol>
+            </div>
+
+            <div class="footer">
+                Generated automatically by your Python Script & GitHub Actions.
+            </div>
         </div>
 
-        <div class="answers">
-            <h2>🔑 Answer Key</h2>
-            <div><strong>1) Single digit number addition:</strong><br>11 | 15 | 12 | 10 | 7</div><br><div><strong>2) Single digit addition of 5:</strong><br>26 | 34 | 23 | 22 | 17</div><br><div><strong>3) Double digit addition:</strong><br>107 | 104 | 168 | 168 | 81</div><br><div><strong>4) Double digit addition of 5:</strong><br>345 | 214 | 313 | 250 | 379</div><br><div><strong>5) 3-digit + 2-digit addition:</strong><br>254 | 918 | 170 | 621 | 657</div><br><div><strong>6) 3-digit addition:</strong><br>1209 | 1217 | 1320 | 1582 | 1370</div><br>
-        </div>
+        <script>
+            function revealSingle(btn) {
+                const answer = btn.previousElementSibling;
+                const box = answer.previousElementSibling;
+                answer.style.display = "inline";
+                box.style.display = "none";
+                btn.style.display = "none";
+            }
 
-        <div class="footer">
-            Generated by Math Quiz Python Script.
-        </div>
+            function toggleAll() {
+                const answers = document.querySelectorAll('.actual-answer');
+                const boxes = document.querySelectorAll('.answer-box');
+                const buttons = document.querySelectorAll('.reveal-btn');
+                const mainBtn = document.querySelector('.btn-toggle');
+                
+                const isHidden = answers[0].style.display === "none";
+                
+                answers.forEach(a => a.style.display = isHidden ? "inline" : "none");
+                boxes.forEach(b => b.style.display = isHidden ? "none" : "inline");
+                buttons.forEach(bt => bt.style.display = isHidden ? "none" : "inline");
+                
+                mainBtn.innerText = isHidden ? "Hide All Answers" : "Show All Answers";
+            }
+        </script>
     </body>
     </html>
     
