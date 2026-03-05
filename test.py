@@ -30,59 +30,74 @@ def generate_quiz_html():
             question_text = " + ".join(map(str, numbers))
             answer = sum(numbers)
             
-            # Feature: Added a span for the answer and a tiny button for each question
+            # Feature: Input box + Check Logic
             quiz_html += f"""
             <li>
-                {question_text} = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">{answer}</span>
+                {question_text} = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, {answer})" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">({answer})</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>"""
         
         quiz_html += "</ol>"
 
-    # Final HTML Construction with Interactive Features
     html_content = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Math Quiz</title>
+        <title>Daily Math Quiz Pro</title>
         <style>
-            body {{ font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f9f9f9; }}
-            .container {{ background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }}
-            h1 {{ border-bottom: 3px solid #4CAF50; color: #2E7D32; padding-bottom: 10px; }}
-            h3 {{ background: #e8f5e9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 4px; color: #2E7D32; margin-top: 25px; }}
-            li {{ margin-bottom: 15px; font-weight: bold; font-size: 1.2em; list-style-position: inside; }}
-            .answer-box {{ color: #ccc; }}
-            .actual-answer {{ color: #d32f2f; font-weight: 800; border-bottom: 2px solid #d32f2f; margin-right: 10px; }}
-            .reveal-btn {{ background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.7em; padding: 2px 8px; vertical-align: middle; }}
-            .reveal-btn:hover {{ background: #ddd; }}
-            .controls {{ margin: 20px 0; display: flex; gap: 10px; }}
-            .main-btn {{ padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }}
-            .btn-print {{ background: #2196F3; color: white; }}
-            .btn-toggle {{ background: #4CAF50; color: white; }}
+            body {{ font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }}
+            .container {{ background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }}
+            h1 {{ border-bottom: 3px solid #4CAF50; color: #2E7D32; }}
+            h3 {{ background: #e8f5e9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 4px; }}
             
-            /* Print View Optimization */
+            /* Input Styling */
+            .user-input {{ width: 80px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1em; text-align: center; }}
+            .correct {{ border-color: #4CAF50 !important; background-color: #e8f5e9; }}
+            .incorrect {{ border-color: #f44336 !important; background-color: #ffebee; }}
+            
+            /* Widgets Styling */
+            #widget-panel {{ position: fixed; top: 20px; right: 20px; background: #333; color: white; padding: 15px; border-radius: 8px; width: 180px; display: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }}
+            .widget-btn {{ background: #555; border: none; color: white; padding: 5px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin: 2px; }}
+            .widget-display {{ font-family: monospace; font-size: 1.4em; text-align: center; margin: 10px 0; color: #4CAF50; }}
+            
+            .controls {{ margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }}
+            .main-btn {{ padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; }}
+            .btn-print {{ background: #2196F3; }}
+            .btn-toggle {{ background: #4CAF50; }}
+            .btn-widget {{ background: #673AB7; }}
+
             @media print {{
-                .reveal-btn, .controls, .footer {{ display: none !important; }}
-                body {{ background: white; margin: 0; padding: 0; }}
-                .container {{ box-shadow: none; border: none; width: 100%; }}
-                .actual-answer {{ display: none !important; }} /* Hide answers when printing worksheet */
-                .answer-box {{ display: inline !important; color: #000; }}
+                .controls, .reveal-btn, #widget-panel, .user-input, .footer {{ display: none !important; }}
+                .actual-answer {{ display: none !important; }}
+                body {{ background: white; }}
+                .container {{ box-shadow: none; }}
             }}
-            
-            .footer {{ margin-top: 50px; font-size: 0.8em; color: #888; text-align: center; border-top: 1px solid #ddd; padding-top: 20px; }}
+            .footer {{ margin-top: 40px; text-align: center; font-size: 0.8em; color: #888; }}
         </style>
     </head>
     <body>
+        <div id="widget-panel">
+            <div style="font-size: 0.9em; border-bottom: 1px solid #555; padding-bottom: 5px;">Timer / Stopwatch</div>
+            <div id="timer-display" class="widget-display">00:00</div>
+            <div style="text-align:center;">
+                <button class="widget-btn" onclick="startStopwatch()">Start SW</button>
+                <button class="widget-btn" onclick="startTimer(5)">Timer 5m</button>
+                <button class="widget-btn" onclick="resetWidget()" style="background:#f44336;">Reset</button>
+            </div>
+        </div>
+
         <div class="container">
             <h1>🧮 Daily Math Practice</h1>
-            <p><strong>Generated on:</strong> {timestamp}</p>
+            <p>Generated on: {timestamp}</p>
             
             <div class="controls">
                 <button class="main-btn btn-toggle" onclick="toggleAll()">Show All Answers</button>
-                <button class="main-btn btn-print" onclick="window.print()">Print Worksheet</button>
+                <button class="main-btn btn-widget" onclick="toggleWidget()">Toggle Timer Tool</button>
+                <button class="main-btn btn-print" onclick="window.print()">Print Mode</button>
             </div>
 
             <div class="quiz-section">
@@ -90,32 +105,77 @@ def generate_quiz_html():
             </div>
 
             <div class="footer">
-                Generated automatically by your Python Script & GitHub Actions.
+                Automated Math Quiz Generator
             </div>
         </div>
 
         <script>
+            let timerInterval;
+            let seconds = 0;
+
+            function checkAnswer(input, correct) {{
+                if (input.value == "") {{
+                    input.classList.remove('correct', 'incorrect');
+                    return;
+                }}
+                if (parseInt(input.value) === correct) {{
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                }} else {{
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }}
+            }}
+
             function revealSingle(btn) {{
-                const answer = btn.previousElementSibling;
-                const box = answer.previousElementSibling;
-                answer.style.display = "inline";
-                box.style.display = "none";
+                const ans = btn.previousElementSibling;
+                ans.style.display = "inline";
                 btn.style.display = "none";
             }}
 
             function toggleAll() {{
                 const answers = document.querySelectorAll('.actual-answer');
-                const boxes = document.querySelectorAll('.answer-box');
-                const buttons = document.querySelectorAll('.reveal-btn');
-                const mainBtn = document.querySelector('.btn-toggle');
-                
                 const isHidden = answers[0].style.display === "none";
-                
                 answers.forEach(a => a.style.display = isHidden ? "inline" : "none");
-                boxes.forEach(b => b.style.display = isHidden ? "none" : "inline");
-                buttons.forEach(bt => bt.style.display = isHidden ? "none" : "inline");
-                
-                mainBtn.innerText = isHidden ? "Hide All Answers" : "Show All Answers";
+            }}
+
+            function toggleWidget() {{
+                const panel = document.getElementById('widget-panel');
+                panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+            }}
+
+            function formatTime(s) {{
+                let mins = Math.floor(s / 60);
+                let secs = s % 60;
+                return (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+            }}
+
+            function startStopwatch() {{
+                resetWidget();
+                timerInterval = setInterval(() => {{
+                    seconds++;
+                    document.getElementById('timer-display').innerText = formatTime(seconds);
+                }}, 1000);
+            }}
+
+            function startTimer(minutes) {{
+                resetWidget();
+                seconds = minutes * 60;
+                document.getElementById('timer-display').innerText = formatTime(seconds);
+                timerInterval = setInterval(() => {{
+                    seconds--;
+                    document.getElementById('timer-display').innerText = formatTime(seconds);
+                    if (seconds <= 0) {{
+                        clearInterval(timerInterval);
+                        alert("Time is up!");
+                    }}
+                }}, 1000);
+            }}
+
+            function resetWidget() {{
+                clearInterval(timerInterval);
+                seconds = 0;
+                document.getElementById('timer-display').innerText = "00:00";
             }}
         </script>
     </body>
@@ -125,7 +185,7 @@ def generate_quiz_html():
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
     
-    print("✅ Successfully generated index.html with Interactive Features!")
+    print("✅ Successfully generated!")
 
 if __name__ == "__main__":
     generate_quiz_html()
