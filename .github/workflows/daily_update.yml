@@ -1,0 +1,26 @@
+name: Run Daily Script
+on:
+  schedule:
+    - cron: '0 0 * * *'  # This runs at midnight UTC every day
+  workflow_dispatch:      # This adds a "Run" button so you can test it manually
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write    # This allows the robot to save the index.html back to your repo
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Run my code
+        run: python test.py
+      - name: Save the new website file
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add index.html
+          git commit -m "Automated update" || exit 0
+          git push
