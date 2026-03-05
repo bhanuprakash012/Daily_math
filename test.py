@@ -109,74 +109,88 @@ def generate_quiz_html():
             </div>
         </div>
 
+# Replace the <script> section in your test.py with this:
         <script>
             let timerInterval;
             let seconds = 0;
 
-            function checkAnswer(input, correct) {{
-                if (input.value == "") {{
+            function checkAnswer(input, correct) {
+                if (input.value == "") {
                     input.classList.remove('correct', 'incorrect');
                     return;
-                }}
-                if (parseInt(input.value) === correct) {{
+                }
+                
+                // 1. Check if correct
+                if (parseInt(input.value) === correct) {
                     input.classList.add('correct');
                     input.classList.remove('incorrect');
-                }} else {{
+                } else {
                     input.classList.add('incorrect');
                     input.classList.remove('correct');
-                }}
-            }}
+                }
 
-            function revealSingle(btn) {{
+                // 2. Jump to next question
+                // Find all inputs on the page
+                const allInputs = Array.from(document.querySelectorAll('.user-input'));
+                const currentIndex = allInputs.indexOf(input);
+                
+                // If there is a next input, move the cursor there
+                if (currentIndex < allInputs.length - 1) {
+                    allInputs[currentIndex + 1].focus();
+                }
+            }
+
+            // Keep your existing timer/stopwatch functions below...
+            function revealSingle(btn) {
                 const ans = btn.previousElementSibling;
                 ans.style.display = "inline";
                 btn.style.display = "none";
-            }}
+            }
 
-            function toggleAll() {{
+            function toggleAll() {
                 const answers = document.querySelectorAll('.actual-answer');
                 const isHidden = answers[0].style.display === "none";
                 answers.forEach(a => a.style.display = isHidden ? "inline" : "none");
-            }}
+            }
 
-            function toggleWidget() {{
+            function toggleWidget() {
                 const panel = document.getElementById('widget-panel');
                 panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
-            }}
+            }
 
-            function formatTime(s) {{
+            function formatTime(s) {
                 let mins = Math.floor(s / 60);
                 let secs = s % 60;
                 return (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
-            }}
+            }
 
-            function startStopwatch() {{
+            function startStopwatch() {
                 resetWidget();
-                timerInterval = setInterval(() => {{
+                timerInterval = setInterval(() => {
                     seconds++;
                     document.getElementById('timer-display').innerText = formatTime(seconds);
-                }}, 1000);
-            }}
+                }, 1000);
+            }
 
-            function startTimer(minutes) {{
+            function startTimer(minutes) {
                 resetWidget();
                 seconds = minutes * 60;
                 document.getElementById('timer-display').innerText = formatTime(seconds);
-                timerInterval = setInterval(() => {{
+                timerInterval = setInterval(() => {
                     seconds--;
                     document.getElementById('timer-display').innerText = formatTime(seconds);
-                    if (seconds <= 0) {{
+                    if (seconds <= 0) {
                         clearInterval(timerInterval);
                         alert("Time is up!");
-                    }}
-                }}, 1000);
-            }}
+                    }
+                }, 1000);
+            }
 
-            function resetWidget() {{
+            function resetWidget() {
                 clearInterval(timerInterval);
                 seconds = 0;
                 document.getElementById('timer-display').innerText = "00:00";
-            }}
+            }
         </script>
     </body>
     </html>
@@ -189,3 +203,4 @@ def generate_quiz_html():
 
 if __name__ == "__main__":
     generate_quiz_html()
+
