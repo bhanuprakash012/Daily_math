@@ -13,6 +13,7 @@ def generate_quiz_html():
 
     quiz_html = ""
     timestamp = datetime.now().strftime("%B %d, %Y - %H:%M:%S")
+    total_questions = len(categories) * 5
 
     for label, digit_type, count in categories:
         quiz_html += f"<h3>{label}</h3><ol>"
@@ -30,7 +31,6 @@ def generate_quiz_html():
             question_text = " + ".join(map(str, numbers))
             answer = sum(numbers)
             
-            # Feature: Input box + Check Logic
             quiz_html += f"""
             <li>
                 {question_text} = 
@@ -51,27 +51,23 @@ def generate_quiz_html():
         <style>
             body {{ font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }}
             .container {{ background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }}
-            h1 {{ border-bottom: 3px solid #4CAF50; color: #2E7D32; }}
+            h1 {{ border-bottom: 3px solid #4CAF50; color: #2E7D32; margin-bottom: 5px; }}
             h3 {{ background: #e8f5e9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 4px; }}
-            
-            /* Input Styling */
+            .stats-bar {{ background: #fff3e0; padding: 10px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; color: #e65100; border: 1px solid #ffe0b2; }}
             .user-input {{ width: 80px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1em; text-align: center; }}
             .correct {{ border-color: #4CAF50 !important; background-color: #e8f5e9; }}
             .incorrect {{ border-color: #f44336 !important; background-color: #ffebee; }}
-            
-            /* Widgets Styling */
             #widget-panel {{ position: fixed; top: 20px; right: 20px; background: #333; color: white; padding: 15px; border-radius: 8px; width: 180px; display: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }}
             .widget-btn {{ background: #555; border: none; color: white; padding: 5px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin: 2px; }}
             .widget-display {{ font-family: monospace; font-size: 1.4em; text-align: center; margin: 10px 0; color: #4CAF50; }}
-            
             .controls {{ margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }}
             .main-btn {{ padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; }}
             .btn-print {{ background: #2196F3; }}
             .btn-toggle {{ background: #4CAF50; }}
             .btn-widget {{ background: #673AB7; }}
-
+            .btn-reset {{ background: #f44336; }}
             @media print {{
-                .controls, .reveal-btn, #widget-panel, .user-input, .footer {{ display: none !important; }}
+                .controls, .reveal-btn, #widget-panel, .user-input, .footer, .stats-bar {{ display: none !important; }}
                 .actual-answer {{ display: none !important; }}
                 body {{ background: white; }}
                 .container {{ box-shadow: none; }}
@@ -92,11 +88,16 @@ def generate_quiz_html():
 
         <div class="container">
             <h1>🧮 Daily Math Practice</h1>
-            <p>Generated on: {timestamp}</p>
+            <p><strong>Generated:</strong> {timestamp}</p>
             
+            <div class="stats-bar">
+                Correct: <span id="score-count">0</span> / {total_questions}
+            </div>
+
             <div class="controls">
-                <button class="main-btn btn-toggle" onclick="toggleAll()">Show All Answers</button>
-                <button class="main-btn btn-widget" onclick="toggleWidget()">Toggle Timer Tool</button>
+                <button class="main-btn btn-toggle" onclick="toggleAll()">Show Answers</button>
+                <button class="main-btn btn-widget" onclick="toggleWidget()">Timer Tool</button>
+                <button class="main-btn btn-reset" onclick="resetWorksheet()">Reset All</button>
                 <button class="main-btn btn-print" onclick="window.print()">Print Mode</button>
             </div>
 
@@ -105,92 +106,105 @@ def generate_quiz_html():
             </div>
 
             <div class="footer">
-                Automated Math Quiz Generator
+                Automated with Python & GitHub Actions
             </div>
         </div>
 
-# Replace the <script> section in your test.py with this:
         <script>
             let timerInterval;
             let seconds = 0;
 
-            function checkAnswer(input, correct) {
-                if (input.value == "") {
+            function checkAnswer(input, correct) {{
+                if (input.value == "") {{
                     input.classList.remove('correct', 'incorrect');
+                    updateScore();
                     return;
-                }
+                }}
                 
-                // 1. Check if correct
-                if (parseInt(input.value) === correct) {
+                if (parseInt(input.value) === correct) {{
                     input.classList.add('correct');
                     input.classList.remove('incorrect');
-                } else {
+                }} else {{
                     input.classList.add('incorrect');
                     input.classList.remove('correct');
-                }
+                }}
 
-                // 2. Jump to next question
-                // Find all inputs on the page
+                updateScore();
+
                 const allInputs = Array.from(document.querySelectorAll('.user-input'));
                 const currentIndex = allInputs.indexOf(input);
-                
-                // If there is a next input, move the cursor there
-                if (currentIndex < allInputs.length - 1) {
+                if (currentIndex < allInputs.length - 1) {{
                     allInputs[currentIndex + 1].focus();
-                }
-            }
+                }}
+            }}
 
-            // Keep your existing timer/stopwatch functions below...
-            function revealSingle(btn) {
+            function updateScore() {{
+                const correctCount = document.querySelectorAll('.user-input.correct').length;
+                document.getElementById('score-count').innerText = correctCount;
+            }}
+
+            function resetWorksheet() {{
+                if(confirm("Are you sure you want to clear all your answers?")) {{
+                    document.querySelectorAll('.user-input').forEach(input => {{
+                        input.value = "";
+                        input.classList.remove('correct', 'incorrect');
+                    }});
+                    document.querySelectorAll('.actual-answer').forEach(ans => ans.style.display = "none");
+                    document.querySelectorAll('.reveal-btn').forEach(btn => btn.style.display = "inline");
+                    updateScore();
+                }}
+            }}
+
+            function revealSingle(btn) {{
                 const ans = btn.previousElementSibling;
                 ans.style.display = "inline";
                 btn.style.display = "none";
-            }
+            }}
 
-            function toggleAll() {
+            function toggleAll() {{
                 const answers = document.querySelectorAll('.actual-answer');
                 const isHidden = answers[0].style.display === "none";
                 answers.forEach(a => a.style.display = isHidden ? "inline" : "none");
-            }
+            }}
 
-            function toggleWidget() {
+            function toggleWidget() {{
                 const panel = document.getElementById('widget-panel');
                 panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
-            }
+            }}
 
-            function formatTime(s) {
+            function formatTime(s) {{
                 let mins = Math.floor(s / 60);
                 let secs = s % 60;
                 return (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
-            }
+            }}
 
-            function startStopwatch() {
+            function startStopwatch() {{
                 resetWidget();
-                timerInterval = setInterval(() => {
+                timerInterval = setInterval(() => {{
                     seconds++;
                     document.getElementById('timer-display').innerText = formatTime(seconds);
-                }, 1000);
-            }
+                }}, 1000);
+            }}
 
-            function startTimer(minutes) {
+            function startTimer(minutes) {{
                 resetWidget();
                 seconds = minutes * 60;
                 document.getElementById('timer-display').innerText = formatTime(seconds);
-                timerInterval = setInterval(() => {
+                timerInterval = setInterval(() => {{
                     seconds--;
                     document.getElementById('timer-display').innerText = formatTime(seconds);
-                    if (seconds <= 0) {
+                    if (seconds <= 0) {{
                         clearInterval(timerInterval);
                         alert("Time is up!");
-                    }
-                }, 1000);
-            }
+                    }}
+                }}, 1000);
+            }}
 
-            function resetWidget() {
+            function resetWidget() {{
                 clearInterval(timerInterval);
                 seconds = 0;
                 document.getElementById('timer-display').innerText = "00:00";
-            }
+            }}
         </script>
     </body>
     </html>
@@ -203,4 +217,3 @@ def generate_quiz_html():
 
 if __name__ == "__main__":
     generate_quiz_html()
-
