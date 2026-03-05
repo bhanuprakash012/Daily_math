@@ -22,4 +22,4 @@ Ensure you have **Python 3.x** installed on your machine.
 ### 2. Run the Script
 Clone the repository and run the script using your terminal:
 ```bash
-python math_quiz.py
+python test.py
