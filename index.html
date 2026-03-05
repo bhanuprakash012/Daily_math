@@ -4,225 +4,315 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Math Quiz</title>
+        <title>Daily Math Quiz Pro</title>
         <style>
-            body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f9f9f9; }
-            .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-            h1 { border-bottom: 3px solid #4CAF50; color: #2E7D32; padding-bottom: 10px; }
-            h3 { background: #e8f5e9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 4px; color: #2E7D32; margin-top: 25px; }
-            li { margin-bottom: 15px; font-weight: bold; font-size: 1.2em; list-style-position: inside; }
-            .answer-box { color: #ccc; }
-            .actual-answer { color: #d32f2f; font-weight: 800; border-bottom: 2px solid #d32f2f; margin-right: 10px; }
-            .reveal-btn { background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.7em; padding: 2px 8px; vertical-align: middle; }
-            .reveal-btn:hover { background: #ddd; }
-            .controls { margin: 20px 0; display: flex; gap: 10px; }
-            .main-btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
-            .btn-print { background: #2196F3; color: white; }
-            .btn-toggle { background: #4CAF50; color: white; }
+            body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }
+            .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
+            h1 { border-bottom: 3px solid #4CAF50; color: #2E7D32; }
+            h3 { background: #e8f5e9; padding: 10px; border-left: 5px solid #4CAF50; border-radius: 4px; }
             
-            /* Print View Optimization */
+            /* Input Styling */
+            .user-input { width: 80px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1em; text-align: center; }
+            .correct { border-color: #4CAF50 !important; background-color: #e8f5e9; }
+            .incorrect { border-color: #f44336 !important; background-color: #ffebee; }
+            
+            /* Widgets Styling */
+            #widget-panel { position: fixed; top: 20px; right: 20px; background: #333; color: white; padding: 15px; border-radius: 8px; width: 180px; display: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+            .widget-btn { background: #555; border: none; color: white; padding: 5px; cursor: pointer; border-radius: 3px; font-size: 0.8em; margin: 2px; }
+            .widget-display { font-family: monospace; font-size: 1.4em; text-align: center; margin: 10px 0; color: #4CAF50; }
+            
+            .controls { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+            .main-btn { padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; }
+            .btn-print { background: #2196F3; }
+            .btn-toggle { background: #4CAF50; }
+            .btn-widget { background: #673AB7; }
+
             @media print {
-                .reveal-btn, .controls, .footer { display: none !important; }
-                body { background: white; margin: 0; padding: 0; }
-                .container { box-shadow: none; border: none; width: 100%; }
-                .actual-answer { display: none !important; } /* Hide answers when printing worksheet */
-                .answer-box { display: inline !important; color: #000; }
+                .controls, .reveal-btn, #widget-panel, .user-input, .footer { display: none !important; }
+                .actual-answer { display: none !important; }
+                body { background: white; }
+                .container { box-shadow: none; }
             }
-            
-            .footer { margin-top: 50px; font-size: 0.8em; color: #888; text-align: center; border-top: 1px solid #ddd; padding-top: 20px; }
+            .footer { margin-top: 40px; text-align: center; font-size: 0.8em; color: #888; }
         </style>
     </head>
     <body>
+        <div id="widget-panel">
+            <div style="font-size: 0.9em; border-bottom: 1px solid #555; padding-bottom: 5px;">Timer / Stopwatch</div>
+            <div id="timer-display" class="widget-display">00:00</div>
+            <div style="text-align:center;">
+                <button class="widget-btn" onclick="startStopwatch()">Start SW</button>
+                <button class="widget-btn" onclick="startTimer(5)">Timer 5m</button>
+                <button class="widget-btn" onclick="resetWidget()" style="background:#f44336;">Reset</button>
+            </div>
+        </div>
+
         <div class="container">
             <h1>🧮 Daily Math Practice</h1>
-            <p><strong>Generated on:</strong> March 05, 2026 - 09:43:27</p>
+            <p>Generated on: March 05, 2026 - 09:49:05</p>
             
             <div class="controls">
                 <button class="main-btn btn-toggle" onclick="toggleAll()">Show All Answers</button>
-                <button class="main-btn btn-print" onclick="window.print()">Print Worksheet</button>
+                <button class="main-btn btn-widget" onclick="toggleWidget()">Toggle Timer Tool</button>
+                <button class="main-btn btn-print" onclick="window.print()">Print Mode</button>
             </div>
 
             <div class="quiz-section">
                 <h3>1) Single digit number addition</h3><ol>
             <li>
-                9 + 8 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">17</span>
+                8 + 5 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 13)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                2 + 2 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">4</span>
+                4 + 3 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 7)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                7 + 4 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">11</span>
+                5 + 2 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 7)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                2 + 5 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">7</span>
+                5 + 6 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 11)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(11)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                8 + 7 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">15</span>
+                9 + 5 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 14)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(14)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol><h3>2) Single digit addition of 5</h3><ol>
             <li>
-                2 + 4 + 8 + 6 + 5 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">25</span>
+                5 + 1 + 2 + 6 + 7 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 21)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(21)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                5 + 7 + 2 + 8 + 3 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">25</span>
+                9 + 3 + 2 + 2 + 5 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 21)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(21)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                3 + 2 + 7 + 6 + 1 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">19</span>
+                3 + 7 + 2 + 2 + 9 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 23)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(23)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                2 + 8 + 7 + 7 + 9 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">33</span>
+                4 + 6 + 2 + 2 + 6 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 20)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(20)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                5 + 6 + 5 + 7 + 2 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">25</span>
+                3 + 4 + 6 + 9 + 1 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 23)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(23)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol><h3>3) Double digit addition</h3><ol>
             <li>
-                33 + 75 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">108</span>
+                36 + 60 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 96)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(96)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                97 + 65 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">162</span>
+                10 + 62 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 72)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(72)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                25 + 89 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">114</span>
+                76 + 63 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 139)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(139)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                51 + 94 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">145</span>
+                48 + 57 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 105)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(105)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                95 + 12 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">107</span>
+                94 + 78 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 172)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(172)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol><h3>4) Double digit addition of 5</h3><ol>
             <li>
-                72 + 13 + 57 + 88 + 98 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">328</span>
+                56 + 15 + 11 + 25 + 34 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 141)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(141)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                53 + 90 + 37 + 20 + 21 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">221</span>
+                67 + 85 + 25 + 64 + 75 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 316)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(316)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                39 + 71 + 56 + 99 + 96 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">361</span>
+                52 + 30 + 44 + 43 + 12 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 181)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(181)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                59 + 92 + 67 + 31 + 28 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">277</span>
+                17 + 46 + 13 + 11 + 47 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 134)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(134)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                74 + 88 + 33 + 76 + 11 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">282</span>
+                48 + 63 + 10 + 56 + 88 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 265)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(265)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol><h3>5) 3-digit + 2-digit addition</h3><ol>
             <li>
-                342 + 55 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">397</span>
+                111 + 76 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 187)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(187)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                123 + 27 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">150</span>
+                932 + 60 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 992)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(992)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                791 + 14 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">805</span>
+                389 + 74 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 463)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(463)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                240 + 55 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">295</span>
+                290 + 53 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 343)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(343)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                518 + 72 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">590</span>
+                443 + 69 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 512)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(512)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol><h3>6) 3-digit addition</h3><ol>
             <li>
-                884 + 830 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">1714</span>
+                756 + 464 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 1220)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1220)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                330 + 436 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">766</span>
+                592 + 143 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 735)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(735)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                982 + 348 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">1330</span>
+                679 + 679 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 1358)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1358)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                158 + 669 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">827</span>
+                189 + 736 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 925)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(925)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                674 + 276 = <span class="answer-box">_______</span>
-                <span class="actual-answer" style="display:none;">950</span>
+                481 + 456 = 
+                <input type="number" class="user-input" onchange="checkAnswer(this, 937)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(937)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol>
             </div>
 
             <div class="footer">
-                Generated automatically by your Python Script & GitHub Actions.
+                Automated Math Quiz Generator
             </div>
         </div>
 
         <script>
+            let timerInterval;
+            let seconds = 0;
+
+            function checkAnswer(input, correct) {
+                if (input.value == "") {
+                    input.classList.remove('correct', 'incorrect');
+                    return;
+                }
+                if (parseInt(input.value) === correct) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            }
+
             function revealSingle(btn) {
-                const answer = btn.previousElementSibling;
-                const box = answer.previousElementSibling;
-                answer.style.display = "inline";
-                box.style.display = "none";
+                const ans = btn.previousElementSibling;
+                ans.style.display = "inline";
                 btn.style.display = "none";
             }
 
             function toggleAll() {
                 const answers = document.querySelectorAll('.actual-answer');
-                const boxes = document.querySelectorAll('.answer-box');
-                const buttons = document.querySelectorAll('.reveal-btn');
-                const mainBtn = document.querySelector('.btn-toggle');
-                
                 const isHidden = answers[0].style.display === "none";
-                
                 answers.forEach(a => a.style.display = isHidden ? "inline" : "none");
-                boxes.forEach(b => b.style.display = isHidden ? "none" : "inline");
-                buttons.forEach(bt => bt.style.display = isHidden ? "none" : "inline");
-                
-                mainBtn.innerText = isHidden ? "Hide All Answers" : "Show All Answers";
+            }
+
+            function toggleWidget() {
+                const panel = document.getElementById('widget-panel');
+                panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+            }
+
+            function formatTime(s) {
+                let mins = Math.floor(s / 60);
+                let secs = s % 60;
+                return (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+            }
+
+            function startStopwatch() {
+                resetWidget();
+                timerInterval = setInterval(() => {
+                    seconds++;
+                    document.getElementById('timer-display').innerText = formatTime(seconds);
+                }, 1000);
+            }
+
+            function startTimer(minutes) {
+                resetWidget();
+                seconds = minutes * 60;
+                document.getElementById('timer-display').innerText = formatTime(seconds);
+                timerInterval = setInterval(() => {
+                    seconds--;
+                    document.getElementById('timer-display').innerText = formatTime(seconds);
+                    if (seconds <= 0) {
+                        clearInterval(timerInterval);
+                        alert("Time is up!");
+                    }
+                }, 1000);
+            }
+
+            function resetWidget() {
+                clearInterval(timerInterval);
+                seconds = 0;
+                document.getElementById('timer-display').innerText = "00:00";
             }
         </script>
     </body>
