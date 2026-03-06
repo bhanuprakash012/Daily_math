@@ -1,52 +1,40 @@
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Math Quiz - Precision Training</title>
-        <style>
-            body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }
-            .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-            h1 { border-bottom: 3px solid #4CAF50; color: #2E7D32; margin-bottom: 5px; }
-            
-            .section { background: #fff; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 25px; padding: 15px; transition: 0.3s; }
-            .section-header { display: flex; justify-content: space-between; align-items: center; background: #e8f5e9; padding: 5px 15px; border-radius: 6px; margin-bottom: 10px; }
-            .section-stats { font-weight: bold; color: #2E7D32; font-size: 0.9em; }
-            .section.complete { border: 2px solid #4CAF50; background-color: #fafffa; }
-            
-            .stats-bar { background: #333; color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; display: flex; justify-content: space-between; }
-            .user-input { width: 80px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1em; text-align: center; }
-            .correct { border-color: #4CAF50 !important; background-color: #e8f5e9; }
-            .incorrect { border-color: #f44336 !important; background-color: #ffebee; }
-            
-            .controls { margin: 20px 0; display: flex; gap: 10px; }
-            .main-btn { padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; }
-            .btn-toggle { background: #4CAF50; }
-            .btn-reset { background: #f44336; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>🧮 Daily Math Practice</h1>
-            <p><strong>Generated:</strong> March 06, 2026 - 01:50:44</p>
-            
-            <div class="stats-bar">
-                <span>Total Score: <span id="total-score">0</span> / 30</span>
-                <span id="overall-status">Take your time between sections!</span>
-            </div>
-
-            <div class="controls">
-                <button class="main-btn btn-toggle" onclick="toggleAll()">Show Answers</button>
-                <button class="main-btn btn-reset" onclick="resetWorksheet()">Reset All</button>
-                <button class="main-btn btn-print" onclick="window.print()">Print Worksheet</button>
-            </div>
-
-            <div class="quiz-section">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>OOP Math Quiz</title>
+            <style>
+                body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }
+                .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+                h1 { border-bottom: 3px solid #4CAF50; color: #2E7D32; margin-bottom: 5px; }
+                .section { background: #fff; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 25px; padding: 15px; }
+                .section-header { display: flex; justify-content: space-between; align-items: center; background: #e8f5e9; padding: 5px 15px; border-radius: 6px; margin-bottom: 10px; }
+                .section-stats { font-weight: bold; color: #2E7D32; font-size: 0.9em; }
+                .section.complete { border: 2px solid #4CAF50; background-color: #fafffa; }
+                .stats-bar { background: #333; color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; display: flex; justify-content: space-between; }
+                .user-input { width: 100px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1.1em; text-align: center; }
+                .correct { border-color: #4CAF50 !important; background-color: #e8f5e9; }
+                .incorrect { border-color: #f44336 !important; background-color: #ffebee; }
+                .main-btn { padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; background: #4CAF50; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🧮 Daily OOP Math</h1>
+                <p><strong>Generated:</strong> March 06, 2026 - 05:48:38</p>
+                <div class="stats-bar">
+                    <span>Total Score: <span id="total-score">0</span> / 30</span>
+                    <span>OOP Architecture Ready</span>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <button class="main-btn" onclick="location.reload()">Reset All</button>
+                </div>
                 
         <div class="section" id="section-0">
             <div class="section-header">
-                <h3>1) Single digit number addition</h3>
+                <h3>1) Single Digit Addition</h3>
                 <div class="section-stats">
                     Score: <span id="score-0">0</span>/5 | 
                     Time: <span id="time-0">0s</span>
@@ -54,68 +42,48 @@
             </div>
             <ol>
             <li>
-                3 + 2 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="0" 
-                       data-qidx="0"
-                       onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 5)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(5)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                6 + 7 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="0" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 13)" 
-                       placeholder=" ">
+                7 + 6 = 
+                <input type="number" class="user-input" 
+                       data-section="0" data-qidx="0" data-total="5"
+                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 13)" placeholder="?">
                 <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                2 + 9 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="0" 
-                       data-qidx="2"
-                       onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 11)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(11)</span>
+                8 + 5 = 
+                <input type="number" class="user-input" 
+                       data-section="0" data-qidx="1" data-total="5"
+                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 13)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                6 + 2 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="0" 
-                       data-qidx="3"
-                       onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 8)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(8)</span>
+                2 + 5 = 
+                <input type="number" class="user-input" 
+                       data-section="0" data-qidx="2" data-total="5"
+                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 7)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                8 + 6 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="0" 
-                       data-qidx="4"
-                       onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 14)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(14)</span>
+                7 + 2 = 
+                <input type="number" class="user-input" 
+                       data-section="0" data-qidx="3" data-total="5"
+                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 9)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                4 + 5 = 
+                <input type="number" class="user-input" 
+                       data-section="0" data-qidx="4" data-total="5"
+                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 9)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-1">
             <div class="section-header">
-                <h3>2) Single digit addition of 5</h3>
+                <h3>2) Single Digit (5 numbers)</h3>
                 <div class="section-stats">
                     Score: <span id="score-1">0</span>/5 | 
                     Time: <span id="time-1">0s</span>
@@ -123,68 +91,48 @@
             </div>
             <ol>
             <li>
-                7 + 3 + 8 + 1 + 2 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="1" 
-                       data-qidx="0"
-                       onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 21)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(21)</span>
+                7 + 8 + 5 + 5 + 1 = 
+                <input type="number" class="user-input" 
+                       data-section="1" data-qidx="0" data-total="5"
+                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 26)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(26)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                3 + 9 + 5 + 1 + 1 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="1" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 19)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(19)</span>
+                7 + 6 + 8 + 5 + 9 = 
+                <input type="number" class="user-input" 
+                       data-section="1" data-qidx="1" data-total="5"
+                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 35)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(35)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                8 + 8 + 8 + 7 + 8 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="1" 
-                       data-qidx="2"
-                       onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 39)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(39)</span>
+                9 + 8 + 8 + 6 + 9 = 
+                <input type="number" class="user-input" 
+                       data-section="1" data-qidx="2" data-total="5"
+                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 40)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(40)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                8 + 6 + 2 + 7 + 4 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="1" 
-                       data-qidx="3"
-                       onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 27)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(27)</span>
+                4 + 5 + 5 + 1 + 9 = 
+                <input type="number" class="user-input" 
+                       data-section="1" data-qidx="3" data-total="5"
+                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 24)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(24)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                8 + 4 + 5 + 8 + 6 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="1" 
-                       data-qidx="4"
-                       onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 31)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(31)</span>
+                3 + 3 + 3 + 6 + 8 = 
+                <input type="number" class="user-input" 
+                       data-section="1" data-qidx="4" data-total="5"
+                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 23)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(23)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-2">
             <div class="section-header">
-                <h3>3) Double digit addition</h3>
+                <h3>3) Double Digit Addition</h3>
                 <div class="section-stats">
                     Score: <span id="score-2">0</span>/5 | 
                     Time: <span id="time-2">0s</span>
@@ -192,68 +140,48 @@
             </div>
             <ol>
             <li>
-                96 + 53 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="2" 
-                       data-qidx="0"
-                       onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 149)" 
-                       placeholder=" ">
+                63 + 86 = 
+                <input type="number" class="user-input" 
+                       data-section="2" data-qidx="0" data-total="5"
+                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 149)" placeholder="?">
                 <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(149)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                99 + 78 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="2" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 177)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(177)</span>
+                85 + 70 = 
+                <input type="number" class="user-input" 
+                       data-section="2" data-qidx="1" data-total="5"
+                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 155)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(155)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                19 + 23 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="2" 
-                       data-qidx="2"
-                       onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 42)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(42)</span>
+                66 + 75 = 
+                <input type="number" class="user-input" 
+                       data-section="2" data-qidx="2" data-total="5"
+                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 141)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(141)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                97 + 17 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="2" 
-                       data-qidx="3"
-                       onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 114)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(114)</span>
+                77 + 84 = 
+                <input type="number" class="user-input" 
+                       data-section="2" data-qidx="3" data-total="5"
+                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 161)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(161)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                63 + 29 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="2" 
-                       data-qidx="4"
-                       onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 92)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(92)</span>
+                81 + 42 = 
+                <input type="number" class="user-input" 
+                       data-section="2" data-qidx="4" data-total="5"
+                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 123)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(123)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-3">
             <div class="section-header">
-                <h3>4) Double digit addition of 5</h3>
+                <h3>4) 3-Digit + 2-Digit</h3>
                 <div class="section-stats">
                     Score: <span id="score-3">0</span>/5 | 
                     Time: <span id="time-3">0s</span>
@@ -261,68 +189,48 @@
             </div>
             <ol>
             <li>
-                65 + 89 + 26 + 29 + 82 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="3" 
-                       data-qidx="0"
-                       onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 291)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(291)</span>
+                899 + 76 = 
+                <input type="number" class="user-input" 
+                       data-section="3" data-qidx="0" data-total="5"
+                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 975)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(975)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                85 + 21 + 64 + 38 + 10 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="3" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 218)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(218)</span>
+                775 + 26 = 
+                <input type="number" class="user-input" 
+                       data-section="3" data-qidx="1" data-total="5"
+                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 801)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(801)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                87 + 40 + 75 + 26 + 93 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="3" 
-                       data-qidx="2"
-                       onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 321)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(321)</span>
+                32 + 277 = 
+                <input type="number" class="user-input" 
+                       data-section="3" data-qidx="2" data-total="5"
+                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 309)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(309)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                34 + 66 + 84 + 48 + 19 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="3" 
-                       data-qidx="3"
-                       onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 251)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(251)</span>
+                96 + 102 = 
+                <input type="number" class="user-input" 
+                       data-section="3" data-qidx="3" data-total="5"
+                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 198)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(198)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                85 + 56 + 14 + 61 + 41 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="3" 
-                       data-qidx="4"
-                       onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 257)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(257)</span>
+                89 + 958 = 
+                <input type="number" class="user-input" 
+                       data-section="3" data-qidx="4" data-total="5"
+                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 1047)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1047)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-4">
             <div class="section-header">
-                <h3>5) 3-digit + 2-digit addition</h3>
+                <h3>5) 3-Digit + 4-Digit</h3>
                 <div class="section-stats">
                     Score: <span id="score-4">0</span>/5 | 
                     Time: <span id="time-4">0s</span>
@@ -330,68 +238,48 @@
             </div>
             <ol>
             <li>
-                926 + 52 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="4" 
-                       data-qidx="0"
-                       onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 978)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(978)</span>
+                4919 + 885 = 
+                <input type="number" class="user-input" 
+                       data-section="4" data-qidx="0" data-total="5"
+                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 5804)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(5804)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                670 + 22 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="4" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 692)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(692)</span>
+                6475 + 752 = 
+                <input type="number" class="user-input" 
+                       data-section="4" data-qidx="1" data-total="5"
+                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 7227)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7227)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                648 + 68 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="4" 
-                       data-qidx="2"
-                       onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 716)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(716)</span>
+                725 + 3357 = 
+                <input type="number" class="user-input" 
+                       data-section="4" data-qidx="2" data-total="5"
+                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 4082)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(4082)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                525 + 42 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="4" 
-                       data-qidx="3"
-                       onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 567)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(567)</span>
+                690 + 3151 = 
+                <input type="number" class="user-input" 
+                       data-section="4" data-qidx="3" data-total="5"
+                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 3841)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(3841)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                177 + 89 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="4" 
-                       data-qidx="4"
-                       onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 266)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(266)</span>
+                3787 + 177 = 
+                <input type="number" class="user-input" 
+                       data-section="4" data-qidx="4" data-total="5"
+                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 3964)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(3964)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-5">
             <div class="section-header">
-                <h3>6) 3-digit addition</h3>
+                <h3>6) 4-Digit Marathon</h3>
                 <div class="section-stats">
                     Score: <span id="score-5">0</span>/5 | 
                     Time: <span id="time-5">0s</span>
@@ -399,144 +287,96 @@
             </div>
             <ol>
             <li>
-                701 + 837 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="5" 
-                       data-qidx="0"
-                       onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1538)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1538)</span>
+                2208 + 7113 = 
+                <input type="number" class="user-input" 
+                       data-section="5" data-qidx="0" data-total="5"
+                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 9321)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9321)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                252 + 654 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="5" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 906)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(906)</span>
+                2660 + 6603 = 
+                <input type="number" class="user-input" 
+                       data-section="5" data-qidx="1" data-total="5"
+                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 9263)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9263)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                988 + 744 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="5" 
-                       data-qidx="2"
-                       onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1732)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1732)</span>
+                4709 + 8794 = 
+                <input type="number" class="user-input" 
+                       data-section="5" data-qidx="2" data-total="5"
+                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 13503)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13503)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                405 + 736 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="5" 
-                       data-qidx="3"
-                       onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1141)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1141)</span>
+                8226 + 2909 = 
+                <input type="number" class="user-input" 
+                       data-section="5" data-qidx="3" data-total="5"
+                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 11135)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(11135)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                735 + 630 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="5" 
-                       data-qidx="4"
-                       onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1365)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1365)</span>
+                2569 + 8375 = 
+                <input type="number" class="user-input" 
+                       data-section="5" data-qidx="4" data-total="5"
+                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 10944)" placeholder="?">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(10944)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
             </div>
-        </div>
+            <script>
+                let sectionTimers = {}; 
+                let sectionIntervals = {};
 
-        <script>
-            let sectionTimers = {}; 
-            let sectionIntervals = {};
-
-            function startSectionTimer(sId) {
-                // Only start if not already running and not previously finished
-                if (!sectionIntervals[sId]) {
-                    sectionTimers[sId] = 0;
-                    sectionIntervals[sId] = setInterval(() => {
-                        sectionTimers[sId]++;
-                        document.getElementById('time-' + sId).innerText = sectionTimers[sId] + "s";
-                    }, 1000);
-                }
-            }
-
-            function checkAnswer(input, correct) {
-                const sId = input.getAttribute('data-section');
-                const qIdx = input.getAttribute('data-qidx');
-
-                if (input.value == "") {
-                    input.classList.remove('correct', 'incorrect');
-                } else if (parseInt(input.value) === correct) {
-                    input.classList.add('correct');
-                    input.classList.remove('incorrect');
-                } else {
-                    input.classList.add('incorrect');
-                    input.classList.remove('correct');
+                function startSectionTimer(sId) {
+                    if (!sectionIntervals[sId]) {
+                        sectionTimers[sId] = 0;
+                        sectionIntervals[sId] = setInterval(() => {
+                            sectionTimers[sId]++;
+                            document.getElementById('time-' + sId).innerText = sectionTimers[sId] + "s";
+                        }, 1000);
+                    }
                 }
 
-                updateScores(sId);
+                function checkAnswer(input, correct) {
+                    const sId = input.getAttribute('data-section');
+                    const qIdx = parseInt(input.getAttribute('data-qidx'));
+                    const totalInSec = parseInt(input.getAttribute('data-total'));
 
-                // If it's the last question of the section (Index 4)
-                if (qIdx == "4") {
-                    if (input.value !== "") {
+                    if (input.value == "") {
+                        input.classList.remove('correct', 'incorrect');
+                    } else if (parseInt(input.value) === correct) {
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                    }
+
+                    const sectionCorrect = document.querySelectorAll('#section-' + sId + ' .user-input.correct').length;
+                    document.getElementById('score-' + sId).innerText = sectionCorrect;
+                    document.getElementById('total-score').innerText = document.querySelectorAll('.user-input.correct').length;
+
+                    if (qIdx === totalInSec - 1 && input.value !== "") {
                         clearInterval(sectionIntervals[sId]);
                         sectionIntervals[sId] = "FINISHED";
                         document.getElementById('section-' + sId).classList.add('complete');
+                        return;
                     }
-                    // DO NOT jump to the next input if we just finished a section
-                    return; 
+
+                    const allInputs = Array.from(document.querySelectorAll('.user-input'));
+                    const currentIndex = allInputs.indexOf(input);
+                    if (currentIndex < allInputs.length - 1) allInputs[currentIndex + 1].focus();
                 }
 
-                // Otherwise, focus jump to the next input in the SAME section
-                const allInputs = Array.from(document.querySelectorAll('.user-input'));
-                const currentIndex = allInputs.indexOf(input);
-                if (currentIndex < allInputs.length - 1) {
-                    allInputs[currentIndex + 1].focus();
+                function revealSingle(btn) {
+                    btn.previousElementSibling.style.display = "inline";
+                    btn.style.display = "none";
                 }
-            }
-
-            function updateScores(sId) {
-                const sectionCorrect = document.querySelectorAll('#section-' + sId + ' .user-input.correct').length;
-                document.getElementById('score-' + sId).innerText = sectionCorrect;
-
-                const totalCorrect = document.querySelectorAll('.user-input.correct').length;
-                document.getElementById('total-score').innerText = totalCorrect;
-            }
-
-            function resetWorksheet() {
-                if(confirm("This will reset all timers and scores. Continue?")) {
-                    location.reload();
-                }
-            }
-
-            function revealSingle(btn) {
-                const ans = btn.previousElementSibling;
-                ans.style.display = "inline";
-                btn.style.display = "none";
-            }
-
-            function toggleAll() {
-                const answers = document.querySelectorAll('.actual-answer');
-                const isHidden = answers[0].style.display === "none";
-                answers.forEach(a => a.style.display = isHidden ? "inline" : "none");
-            }
-        </script>
-    </body>
-    </html>
-    
+            </script>
+        </body>
+        </html>
+        
