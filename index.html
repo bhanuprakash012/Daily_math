@@ -4,7 +4,7 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>OOP Math Quiz</title>
+            <title>Daily Math Challenge</title>
             <style>
                 body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; background-color: #f0f2f5; }
                 .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -14,7 +14,7 @@
                 .section-stats { font-weight: bold; color: #2E7D32; font-size: 0.9em; }
                 .section.complete { border: 2px solid #4CAF50; background-color: #fafffa; }
                 .stats-bar { background: #333; color: #fff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; display: flex; justify-content: space-between; }
-                .user-input { width: 100px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1.1em; text-align: center; }
+                .user-input { width: 110px; padding: 5px; border: 2px solid #ccc; border-radius: 4px; font-size: 1.1em; text-align: center; }
                 .correct { border-color: #4CAF50 !important; background-color: #e8f5e9; }
                 .incorrect { border-color: #f44336 !important; background-color: #ffebee; }
                 .main-btn { padding: 10px 15px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; background: #4CAF50; }
@@ -22,310 +22,408 @@
         </head>
         <body>
             <div class="container">
-                <h1>🧮 Daily OOP Math</h1>
-                <p><strong>Generated:</strong> March 06, 2026 - 05:48:38</p>
+                <h1>🧮 Daily Math Practice</h1>
+                <p><strong>Generated:</strong> March 06, 2026 - 05:52:28</p>
                 <div class="stats-bar">
-                    <span>Total Score: <span id="total-score">0</span> / 30</span>
-                    <span>OOP Architecture Ready</span>
+                    <span>Total Score: <span id="total-score">0</span> / 40</span>
+                    <span>Section-based timing enabled</span>
                 </div>
                 <div style="margin-bottom:20px;">
                     <button class="main-btn" onclick="location.reload()">Reset All</button>
                 </div>
                 
-        <div class="section" id="section-0">
-            <div class="section-header">
-                <h3>1) Single Digit Addition</h3>
-                <div class="section-stats">
-                    Score: <span id="score-0">0</span>/5 | 
-                    Time: <span id="time-0">0s</span>
+            <div class="section" id="section-0">
+                <div class="section-header">
+                    <h3>1) Single digit number addition</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-0">0</span>/5 | 
+                        Time: <span id="time-0">0s</span>
+                    </div>
                 </div>
-            </div>
-            <ol>
-            <li>
-                7 + 6 = 
-                <input type="number" class="user-input" 
-                       data-section="0" data-qidx="0" data-total="5"
-                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 13)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                8 + 5 = 
-                <input type="number" class="user-input" 
-                       data-section="0" data-qidx="1" data-total="5"
-                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 13)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                2 + 5 = 
-                <input type="number" class="user-input" 
-                       data-section="0" data-qidx="2" data-total="5"
-                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 7)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                7 + 2 = 
-                <input type="number" class="user-input" 
-                       data-section="0" data-qidx="3" data-total="5"
-                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 9)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                4 + 5 = 
-                <input type="number" class="user-input" 
-                       data-section="0" data-qidx="4" data-total="5"
-                       onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 9)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li></ol></div>
-        <div class="section" id="section-1">
-            <div class="section-header">
-                <h3>2) Single Digit (5 numbers)</h3>
-                <div class="section-stats">
-                    Score: <span id="score-1">0</span>/5 | 
-                    Time: <span id="time-1">0s</span>
+                <ol>
+                <li>
+                    1 + 1 = 
+                    <input type="number" class="user-input" 
+                           data-section="0" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 2)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(2)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    8 + 4 = 
+                    <input type="number" class="user-input" 
+                           data-section="0" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 12)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(12)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    6 + 9 = 
+                    <input type="number" class="user-input" 
+                           data-section="0" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 15)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(15)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    2 + 7 = 
+                    <input type="number" class="user-input" 
+                           data-section="0" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 9)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    5 + 3 = 
+                    <input type="number" class="user-input" 
+                           data-section="0" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(0)" onchange="checkAnswer(this, 8)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(8)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-1">
+                <div class="section-header">
+                    <h3>2) Single digit addition of 5</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-1">0</span>/5 | 
+                        Time: <span id="time-1">0s</span>
+                    </div>
                 </div>
-            </div>
-            <ol>
-            <li>
-                7 + 8 + 5 + 5 + 1 = 
-                <input type="number" class="user-input" 
-                       data-section="1" data-qidx="0" data-total="5"
-                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 26)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(26)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                7 + 6 + 8 + 5 + 9 = 
-                <input type="number" class="user-input" 
-                       data-section="1" data-qidx="1" data-total="5"
-                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 35)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(35)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                9 + 8 + 8 + 6 + 9 = 
-                <input type="number" class="user-input" 
-                       data-section="1" data-qidx="2" data-total="5"
-                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 40)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(40)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                4 + 5 + 5 + 1 + 9 = 
-                <input type="number" class="user-input" 
-                       data-section="1" data-qidx="3" data-total="5"
-                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 24)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(24)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                3 + 3 + 3 + 6 + 8 = 
-                <input type="number" class="user-input" 
-                       data-section="1" data-qidx="4" data-total="5"
-                       onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 23)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(23)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li></ol></div>
-        <div class="section" id="section-2">
-            <div class="section-header">
-                <h3>3) Double Digit Addition</h3>
-                <div class="section-stats">
-                    Score: <span id="score-2">0</span>/5 | 
-                    Time: <span id="time-2">0s</span>
+                <ol>
+                <li>
+                    1 + 4 + 9 + 2 + 7 = 
+                    <input type="number" class="user-input" 
+                           data-section="1" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 23)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(23)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    2 + 4 + 1 + 3 + 4 = 
+                    <input type="number" class="user-input" 
+                           data-section="1" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 14)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(14)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    1 + 5 + 5 + 7 + 4 = 
+                    <input type="number" class="user-input" 
+                           data-section="1" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 22)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(22)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    2 + 7 + 3 + 1 + 2 = 
+                    <input type="number" class="user-input" 
+                           data-section="1" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 15)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(15)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    9 + 7 + 5 + 6 + 1 = 
+                    <input type="number" class="user-input" 
+                           data-section="1" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(1)" onchange="checkAnswer(this, 28)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(28)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-2">
+                <div class="section-header">
+                    <h3>3) Double digit addition</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-2">0</span>/5 | 
+                        Time: <span id="time-2">0s</span>
+                    </div>
                 </div>
-            </div>
-            <ol>
-            <li>
-                63 + 86 = 
-                <input type="number" class="user-input" 
-                       data-section="2" data-qidx="0" data-total="5"
-                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 149)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(149)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                85 + 70 = 
-                <input type="number" class="user-input" 
-                       data-section="2" data-qidx="1" data-total="5"
-                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 155)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(155)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                66 + 75 = 
-                <input type="number" class="user-input" 
-                       data-section="2" data-qidx="2" data-total="5"
-                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 141)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(141)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                77 + 84 = 
-                <input type="number" class="user-input" 
-                       data-section="2" data-qidx="3" data-total="5"
-                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 161)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(161)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                81 + 42 = 
-                <input type="number" class="user-input" 
-                       data-section="2" data-qidx="4" data-total="5"
-                       onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 123)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(123)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li></ol></div>
-        <div class="section" id="section-3">
-            <div class="section-header">
-                <h3>4) 3-Digit + 2-Digit</h3>
-                <div class="section-stats">
-                    Score: <span id="score-3">0</span>/5 | 
-                    Time: <span id="time-3">0s</span>
+                <ol>
+                <li>
+                    57 + 98 = 
+                    <input type="number" class="user-input" 
+                           data-section="2" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 155)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(155)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    92 + 18 = 
+                    <input type="number" class="user-input" 
+                           data-section="2" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 110)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(110)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    11 + 76 = 
+                    <input type="number" class="user-input" 
+                           data-section="2" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 87)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(87)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    42 + 92 = 
+                    <input type="number" class="user-input" 
+                           data-section="2" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 134)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(134)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    75 + 10 = 
+                    <input type="number" class="user-input" 
+                           data-section="2" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(2)" onchange="checkAnswer(this, 85)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(85)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-3">
+                <div class="section-header">
+                    <h3>4) Double digit addition of 5</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-3">0</span>/5 | 
+                        Time: <span id="time-3">0s</span>
+                    </div>
                 </div>
-            </div>
-            <ol>
-            <li>
-                899 + 76 = 
-                <input type="number" class="user-input" 
-                       data-section="3" data-qidx="0" data-total="5"
-                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 975)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(975)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                775 + 26 = 
-                <input type="number" class="user-input" 
-                       data-section="3" data-qidx="1" data-total="5"
-                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 801)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(801)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                32 + 277 = 
-                <input type="number" class="user-input" 
-                       data-section="3" data-qidx="2" data-total="5"
-                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 309)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(309)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                96 + 102 = 
-                <input type="number" class="user-input" 
-                       data-section="3" data-qidx="3" data-total="5"
-                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 198)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(198)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                89 + 958 = 
-                <input type="number" class="user-input" 
-                       data-section="3" data-qidx="4" data-total="5"
-                       onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 1047)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1047)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li></ol></div>
-        <div class="section" id="section-4">
-            <div class="section-header">
-                <h3>5) 3-Digit + 4-Digit</h3>
-                <div class="section-stats">
-                    Score: <span id="score-4">0</span>/5 | 
-                    Time: <span id="time-4">0s</span>
+                <ol>
+                <li>
+                    50 + 46 + 15 + 66 + 75 = 
+                    <input type="number" class="user-input" 
+                           data-section="3" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 252)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(252)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    83 + 59 + 82 + 27 + 36 = 
+                    <input type="number" class="user-input" 
+                           data-section="3" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 287)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(287)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    39 + 29 + 44 + 35 + 72 = 
+                    <input type="number" class="user-input" 
+                           data-section="3" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 219)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(219)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    39 + 79 + 63 + 18 + 57 = 
+                    <input type="number" class="user-input" 
+                           data-section="3" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 256)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(256)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    30 + 13 + 95 + 26 + 45 = 
+                    <input type="number" class="user-input" 
+                           data-section="3" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(3)" onchange="checkAnswer(this, 209)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(209)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-4">
+                <div class="section-header">
+                    <h3>5) 3-digit + 2-digit addition</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-4">0</span>/5 | 
+                        Time: <span id="time-4">0s</span>
+                    </div>
                 </div>
-            </div>
-            <ol>
-            <li>
-                4919 + 885 = 
-                <input type="number" class="user-input" 
-                       data-section="4" data-qidx="0" data-total="5"
-                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 5804)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(5804)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                6475 + 752 = 
-                <input type="number" class="user-input" 
-                       data-section="4" data-qidx="1" data-total="5"
-                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 7227)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7227)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                725 + 3357 = 
-                <input type="number" class="user-input" 
-                       data-section="4" data-qidx="2" data-total="5"
-                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 4082)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(4082)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                690 + 3151 = 
-                <input type="number" class="user-input" 
-                       data-section="4" data-qidx="3" data-total="5"
-                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 3841)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(3841)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                3787 + 177 = 
-                <input type="number" class="user-input" 
-                       data-section="4" data-qidx="4" data-total="5"
-                       onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 3964)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(3964)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li></ol></div>
-        <div class="section" id="section-5">
-            <div class="section-header">
-                <h3>6) 4-Digit Marathon</h3>
-                <div class="section-stats">
-                    Score: <span id="score-5">0</span>/5 | 
-                    Time: <span id="time-5">0s</span>
+                <ol>
+                <li>
+                    29 + 537 = 
+                    <input type="number" class="user-input" 
+                           data-section="4" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 566)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(566)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    219 + 80 = 
+                    <input type="number" class="user-input" 
+                           data-section="4" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 299)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(299)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    42 + 231 = 
+                    <input type="number" class="user-input" 
+                           data-section="4" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 273)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(273)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    29 + 237 = 
+                    <input type="number" class="user-input" 
+                           data-section="4" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 266)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(266)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    19 + 691 = 
+                    <input type="number" class="user-input" 
+                           data-section="4" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(4)" onchange="checkAnswer(this, 710)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(710)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-5">
+                <div class="section-header">
+                    <h3>6) 3-digit addition</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-5">0</span>/5 | 
+                        Time: <span id="time-5">0s</span>
+                    </div>
                 </div>
-            </div>
-            <ol>
-            <li>
-                2208 + 7113 = 
-                <input type="number" class="user-input" 
-                       data-section="5" data-qidx="0" data-total="5"
-                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 9321)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9321)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                2660 + 6603 = 
-                <input type="number" class="user-input" 
-                       data-section="5" data-qidx="1" data-total="5"
-                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 9263)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9263)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                4709 + 8794 = 
-                <input type="number" class="user-input" 
-                       data-section="5" data-qidx="2" data-total="5"
-                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 13503)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(13503)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                8226 + 2909 = 
-                <input type="number" class="user-input" 
-                       data-section="5" data-qidx="3" data-total="5"
-                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 11135)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(11135)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                2569 + 8375 = 
-                <input type="number" class="user-input" 
-                       data-section="5" data-qidx="4" data-total="5"
-                       onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 10944)" placeholder="?">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(10944)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li></ol></div>
+                <ol>
+                <li>
+                    653 + 846 = 
+                    <input type="number" class="user-input" 
+                           data-section="5" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 1499)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1499)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    920 + 859 = 
+                    <input type="number" class="user-input" 
+                           data-section="5" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 1779)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1779)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    393 + 330 = 
+                    <input type="number" class="user-input" 
+                           data-section="5" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 723)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(723)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    723 + 892 = 
+                    <input type="number" class="user-input" 
+                           data-section="5" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 1615)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1615)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    461 + 500 = 
+                    <input type="number" class="user-input" 
+                           data-section="5" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(5)" onchange="checkAnswer(this, 961)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(961)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-6">
+                <div class="section-header">
+                    <h3>7) 3-digit + 4-digit addition</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-6">0</span>/5 | 
+                        Time: <span id="time-6">0s</span>
+                    </div>
+                </div>
+                <ol>
+                <li>
+                    7911 + 492 = 
+                    <input type="number" class="user-input" 
+                           data-section="6" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(6)" onchange="checkAnswer(this, 8403)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(8403)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    9137 + 473 = 
+                    <input type="number" class="user-input" 
+                           data-section="6" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(6)" onchange="checkAnswer(this, 9610)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9610)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    1036 + 298 = 
+                    <input type="number" class="user-input" 
+                           data-section="6" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(6)" onchange="checkAnswer(this, 1334)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1334)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    2246 + 919 = 
+                    <input type="number" class="user-input" 
+                           data-section="6" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(6)" onchange="checkAnswer(this, 3165)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(3165)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    111 + 4003 = 
+                    <input type="number" class="user-input" 
+                           data-section="6" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(6)" onchange="checkAnswer(this, 4114)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(4114)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
+            <div class="section" id="section-7">
+                <div class="section-header">
+                    <h3>8) 4-digit addition</h3>
+                    <div class="section-stats">
+                        Score: <span id="score-7">0</span>/5 | 
+                        Time: <span id="time-7">0s</span>
+                    </div>
+                </div>
+                <ol>
+                <li>
+                    2059 + 1677 = 
+                    <input type="number" class="user-input" 
+                           data-section="7" data-qidx="0" data-total="5"
+                           onfocus="startSectionTimer(7)" onchange="checkAnswer(this, 3736)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(3736)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    4594 + 2980 = 
+                    <input type="number" class="user-input" 
+                           data-section="7" data-qidx="1" data-total="5"
+                           onfocus="startSectionTimer(7)" onchange="checkAnswer(this, 7574)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(7574)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    7287 + 8400 = 
+                    <input type="number" class="user-input" 
+                           data-section="7" data-qidx="2" data-total="5"
+                           onfocus="startSectionTimer(7)" onchange="checkAnswer(this, 15687)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(15687)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    2769 + 2941 = 
+                    <input type="number" class="user-input" 
+                           data-section="7" data-qidx="3" data-total="5"
+                           onfocus="startSectionTimer(7)" onchange="checkAnswer(this, 5710)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(5710)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li>
+                <li>
+                    1055 + 7350 = 
+                    <input type="number" class="user-input" 
+                           data-section="7" data-qidx="4" data-total="5"
+                           onfocus="startSectionTimer(7)" onchange="checkAnswer(this, 8405)" placeholder="?">
+                    <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(8405)</span>
+                    <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+                </li></ol></div>
             </div>
             <script>
                 let sectionTimers = {}; 
@@ -356,8 +454,7 @@
                         input.classList.remove('correct');
                     }
 
-                    const sectionCorrect = document.querySelectorAll('#section-' + sId + ' .user-input.correct').length;
-                    document.getElementById('score-' + sId).innerText = sectionCorrect;
+                    document.getElementById('score-' + sId).innerText = document.querySelectorAll('#section-' + sId + ' .user-input.correct').length;
                     document.getElementById('total-score').innerText = document.querySelectorAll('.user-input.correct').length;
 
                     if (qIdx === totalInSec - 1 && input.value !== "") {
