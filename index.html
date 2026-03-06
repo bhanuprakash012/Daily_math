@@ -29,7 +29,7 @@
     <body>
         <div class="container">
             <h1>🧮 Daily Math Practice</h1>
-            <p><strong>Generated:</strong> March 05, 2026 - 10:21:17</p>
+            <p><strong>Generated:</strong> March 06, 2026 - 01:50:44</p>
             
             <div class="stats-bar">
                 <span>Total Score: <span id="total-score">0</span> / 30</span>
@@ -54,11 +54,23 @@
             </div>
             <ol>
             <li>
-                8 + 5 = 
+                3 + 2 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="0" 
                        data-qidx="0"
+                       onfocus="startSectionTimer(0)"
+                       onchange="checkAnswer(this, 5)" 
+                       placeholder=" ">
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(5)</span>
+                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
+            </li>
+            <li>
+                6 + 7 = 
+                <input type="number" 
+                       class="user-input" 
+                       data-section="0" 
+                       data-qidx="1"
                        onfocus="startSectionTimer(0)"
                        onchange="checkAnswer(this, 13)" 
                        placeholder=" ">
@@ -66,51 +78,39 @@
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                1 + 1 = 
-                <input type="number" 
-                       class="user-input" 
-                       data-section="0" 
-                       data-qidx="1"
-                       onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 2)" 
-                       placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(2)</span>
-                <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
-            </li>
-            <li>
-                8 + 8 = 
+                2 + 9 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="0" 
                        data-qidx="2"
                        onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 16)" 
+                       onchange="checkAnswer(this, 11)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(16)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(11)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                2 + 7 = 
+                6 + 2 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="0" 
                        data-qidx="3"
                        onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 9)" 
+                       onchange="checkAnswer(this, 8)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(8)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                6 + 3 = 
+                8 + 6 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="0" 
                        data-qidx="4"
                        onfocus="startSectionTimer(0)"
-                       onchange="checkAnswer(this, 9)" 
+                       onchange="checkAnswer(this, 14)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(9)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(14)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-1">
@@ -123,63 +123,63 @@
             </div>
             <ol>
             <li>
-                5 + 6 + 7 + 6 + 6 = 
+                7 + 3 + 8 + 1 + 2 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="1" 
                        data-qidx="0"
                        onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 30)" 
+                       onchange="checkAnswer(this, 21)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(30)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(21)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                9 + 9 + 1 + 8 + 3 = 
+                3 + 9 + 5 + 1 + 1 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="1" 
                        data-qidx="1"
                        onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 30)" 
+                       onchange="checkAnswer(this, 19)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(30)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(19)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                9 + 1 + 3 + 6 + 5 = 
+                8 + 8 + 8 + 7 + 8 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="1" 
                        data-qidx="2"
                        onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 24)" 
+                       onchange="checkAnswer(this, 39)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(24)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(39)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                1 + 8 + 7 + 9 + 5 = 
+                8 + 6 + 2 + 7 + 4 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="1" 
                        data-qidx="3"
                        onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 30)" 
+                       onchange="checkAnswer(this, 27)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(30)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(27)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                4 + 2 + 1 + 3 + 2 = 
+                8 + 4 + 5 + 8 + 6 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="1" 
                        data-qidx="4"
                        onfocus="startSectionTimer(1)"
-                       onchange="checkAnswer(this, 12)" 
+                       onchange="checkAnswer(this, 31)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(12)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(31)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-2">
@@ -192,63 +192,63 @@
             </div>
             <ol>
             <li>
-                99 + 29 = 
+                96 + 53 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="2" 
                        data-qidx="0"
                        onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 128)" 
+                       onchange="checkAnswer(this, 149)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(128)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(149)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                55 + 30 = 
+                99 + 78 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="2" 
                        data-qidx="1"
                        onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 85)" 
+                       onchange="checkAnswer(this, 177)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(85)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(177)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                99 + 93 = 
+                19 + 23 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="2" 
                        data-qidx="2"
                        onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 192)" 
+                       onchange="checkAnswer(this, 42)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(192)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(42)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                76 + 79 = 
+                97 + 17 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="2" 
                        data-qidx="3"
                        onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 155)" 
+                       onchange="checkAnswer(this, 114)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(155)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(114)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                61 + 68 = 
+                63 + 29 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="2" 
                        data-qidx="4"
                        onfocus="startSectionTimer(2)"
-                       onchange="checkAnswer(this, 129)" 
+                       onchange="checkAnswer(this, 92)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(129)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(92)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-3">
@@ -261,63 +261,63 @@
             </div>
             <ol>
             <li>
-                56 + 26 + 43 + 56 + 23 = 
+                65 + 89 + 26 + 29 + 82 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="3" 
                        data-qidx="0"
                        onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 204)" 
+                       onchange="checkAnswer(this, 291)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(204)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(291)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                30 + 74 + 50 + 13 + 71 = 
+                85 + 21 + 64 + 38 + 10 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="3" 
                        data-qidx="1"
                        onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 238)" 
+                       onchange="checkAnswer(this, 218)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(238)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(218)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                99 + 86 + 19 + 40 + 66 = 
+                87 + 40 + 75 + 26 + 93 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="3" 
                        data-qidx="2"
                        onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 310)" 
+                       onchange="checkAnswer(this, 321)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(310)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(321)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                98 + 31 + 45 + 30 + 29 = 
+                34 + 66 + 84 + 48 + 19 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="3" 
                        data-qidx="3"
                        onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 233)" 
+                       onchange="checkAnswer(this, 251)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(233)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(251)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                40 + 14 + 84 + 29 + 45 = 
+                85 + 56 + 14 + 61 + 41 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="3" 
                        data-qidx="4"
                        onfocus="startSectionTimer(3)"
-                       onchange="checkAnswer(this, 212)" 
+                       onchange="checkAnswer(this, 257)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(212)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(257)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-4">
@@ -330,63 +330,63 @@
             </div>
             <ol>
             <li>
-                101 + 97 = 
+                926 + 52 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="4" 
                        data-qidx="0"
                        onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 198)" 
+                       onchange="checkAnswer(this, 978)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(198)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(978)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                633 + 81 = 
+                670 + 22 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="4" 
                        data-qidx="1"
                        onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 714)" 
+                       onchange="checkAnswer(this, 692)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(714)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(692)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                295 + 99 = 
+                648 + 68 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="4" 
                        data-qidx="2"
                        onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 394)" 
+                       onchange="checkAnswer(this, 716)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(394)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(716)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                838 + 96 = 
+                525 + 42 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="4" 
                        data-qidx="3"
                        onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 934)" 
+                       onchange="checkAnswer(this, 567)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(934)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(567)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                297 + 30 = 
+                177 + 89 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="4" 
                        data-qidx="4"
                        onfocus="startSectionTimer(4)"
-                       onchange="checkAnswer(this, 327)" 
+                       onchange="checkAnswer(this, 266)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(327)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(266)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
         <div class="section" id="section-5">
@@ -399,63 +399,63 @@
             </div>
             <ol>
             <li>
-                712 + 771 = 
+                701 + 837 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="5" 
                        data-qidx="0"
                        onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1483)" 
+                       onchange="checkAnswer(this, 1538)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1483)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1538)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                244 + 254 = 
+                252 + 654 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="5" 
                        data-qidx="1"
                        onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 498)" 
+                       onchange="checkAnswer(this, 906)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(498)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(906)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                988 + 571 = 
+                988 + 744 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="5" 
                        data-qidx="2"
                        onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1559)" 
+                       onchange="checkAnswer(this, 1732)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1559)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1732)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                761 + 198 = 
+                405 + 736 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="5" 
                        data-qidx="3"
                        onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 959)" 
+                       onchange="checkAnswer(this, 1141)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(959)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1141)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li>
             <li>
-                385 + 635 = 
+                735 + 630 = 
                 <input type="number" 
                        class="user-input" 
                        data-section="5" 
                        data-qidx="4"
                        onfocus="startSectionTimer(5)"
-                       onchange="checkAnswer(this, 1020)" 
+                       onchange="checkAnswer(this, 1365)" 
                        placeholder=" ">
-                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1020)</span>
+                <span class="actual-answer" style="display:none; color: #d32f2f; margin-left:10px;">(1365)</span>
                 <button class="reveal-btn" onclick="revealSingle(this)">Ans</button>
             </li></ol></div>
             </div>
